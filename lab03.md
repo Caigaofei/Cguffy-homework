@@ -46,12 +46,12 @@ title: 古今 计算机IT 史上的重要人物
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;斯托曼对此感到气愤与无奈。在对Symbolic进行了一段时间的抗争后，他于1985年发表了著名的GNU宣言(GNU Manifesto)，正式宣布要开始进行一项宏伟的计划：创造一套完全自由，兼容于Unix的操作系统GNU（GNU's Not Unix!）。之后他又建立了自由软件基金会来协助该计划。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他于1989年与一群律师起草了广为使用的GNU通用公共协议证书（GNU General Public License, GNU GPL），创造性地提出了“Copyleft”的概念。 同时，GNU计划中除了最关键的Hurd操作系统内核之外，其他绝大多数软件已经完成。
 ### 七、<font color="#0000dd">亚瑟·克拉克</font> ——《2001太空漫游》小说作者
-![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539276559245&di=449a6ab81dcda48580aa1cbb1794b183&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D3973156151%2C1807720841%26fm%3D214%26gp%3D0.jpg "")<br>
+![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539424806514&di=c76e6f227d505e9f590c5653a67e4db7&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D3973156151%2C1807720841%26fm%3D214%26gp%3D0.jpg "Arthur Charles Clarke")<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**<font size="3">亚瑟·查尔斯·克拉克</font>**，英国科幻小说家。其科幻作品多以科学为依据，小说里的许多预测都已成现实。尤其是他的卫星通讯的描写，与实际发展惊人的一致，地球同步卫星轨道因此命名为“克拉克轨道”。作品包括《童年的终结》(1953)、《月尘飘落》(1961)、《来自天穹的声音》(1965)、《帝国大地》(1976)和《2001》等。还与人合作拍摄富有创新的科学幻想片《2001年太空漫游》。与艾萨克·阿西莫夫、罗伯特·海因莱因并称为二十世纪三大科幻小说家。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;克拉克最知名的科幻小说作品是《2001太空漫游》。本书由导演斯坦利·库布里克于1968年拍摄成同名电影，成为科幻电影的经典名作。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;克拉克于2008年3月19日在斯里兰卡去世，享年90岁。他在临终前刚完成最后一本书《The Last Theorem》的校对工作，该书计划于2008年出版。在《新科学家》杂志上刊登他的讣告：“阿瑟·克拉克爵士去世，我们已经失去了一个太空时代前的最后一个有远见，最雄辩的梦想家。”
 ### 八、<font color="#00dddd">埃德加·弗兰克·科德</font>——关系型数据库之父
-![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539276822692&di=def45c9d3edbb3b783718eed33b8d80b&imgtype=0&src=http%3A%2F%2Fimages.christianpost.com%2Fcn%2Ffull%2F8160%2F%25E7%2589%25B9%25E5%25BE%25B7-%25E5%2585%258B%25E9%25B2%2581%25E5%2585%25B9.jpg "")<br>
+![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539424952949&di=741936f9a623ea8df7151d0f6ef9e248&imgtype=0&src=http%3A%2F%2Fwww.twword.com%2Fuploads%2Fwiki%2Fce%2F64%2F428769_0.jpg "Edgar Frank "Ted" Codd")<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**<font size="3">埃德加·弗兰克·科德</font>**（Edgar Frank Codd，1923－2003）是密执安大学哲学博士，IBM公司研究员，被誉为“关系数据库之父”，并因为在数据库管理系统的理论和实践方面的杰出贡献于1981年获图灵奖。1970年，科德发表题为“大型共享数据库的关系模型”的论文，文中首次提出了数据库的关系模型。由于关系模型简单明了、具有坚实的数学理论基础，所以一经推出就受到了学术界和产业界的高度重视和广泛响应，并很快成为数据库市场的主流。20世纪80年代以来，计算机厂商推出的数据库管理系统几乎都支持关系模型，数据库领域当前的研究工作大都以关系模型为基础。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;早期的计算机太大、太昂贵了，以至于不能广泛地应用于企业。在二十世纪六十年代，计算机开始变得经济有效，并逐渐被私营机构所采用，同时专门针对企业应用开发了许多标准和语言。其中有两个用于处理数据的模型：层次模型和关系网络模型。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在层次模型中，数据记录以层次方式相互关联；主要记录位于上层，后续的各个记录类型在下层分支。在网络模型中，一层中的记录集可能属于邻近的上层中的两个不同的包含层次中。对于这两种模型，编写查询语句来检索信息要求深入了解数据本身的导航结构，因而这是一个复杂的任务，一般都是由专门的编程人员来完成的。<br>
