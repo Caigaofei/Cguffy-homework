@@ -68,4 +68,5 @@ title: 技术科普 JavaScript
 #### 2、强制转换为 String
 ![](图片/转String.jpg "强制转换为String")<br><br>
 #### 3、强制转换为 Boolean
-![](图片/转Boolean.jpg  "转Boolean")
+![](图片/转Boolean.jpg  "转Boolean")<br><br>
+<font size="4"  font face="楷体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小伙伴们，初识JavaScript有什么感受吗？有没感到 dokidoki 心脏乱跳呢？这里我们接触的都是 基础中的基础。 如果小伙伴真的感到了小鹿乱撞，那就自己接着去更深入地了解它吧！</font>
