@@ -4,7 +4,7 @@ title: 技术科普 JavaScript
 ---
 
 # <center><font size="7" font face="楷体" font color="#006666">技术科普 JavaScript</font></center>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4"  font face="楷体">小伙伴们，在这里我要 introduce 的是一门编程语言：**<font size="3">JavaScript</font>**。对于编程语言，广为人知的便是 **C、C++、Python、Java** 和 **JavaScript** 了。那么 ***JavaScript*** 到底是一门怎样的语言呢？我就在这简单地介绍一下吧 (毕竟我也是一枚小白呀~~~~~~ )。</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4"  font face="楷体">小伙伴们，在这里我要 introduce 的是一门编程语言：<font size="4">JavaScript</font>。对于编程语言，广为人知的便是 C、C++、Python、Java 和 JavaScript 了。那么 JavaScript 到底是一门怎样的语言呢？我就在这简单地介绍一下吧 (毕竟我也是一枚小白呀~~~~~~ )。</font>
 # JavaScript 简介
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**JavaScript** 是一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为 JavaScript 引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在 **HTML**（标准通用标记语言下的一个应用）网页上使用，用来给 HTML 网页增加动态功能。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在1995年时，由 **Netscape** 公司的 Brendan Eich，在网景领航者浏览器上首次设计实现而成。因为 Netscape 与 Sun 合作，Netscape 管理层希望它外观看起来像 Java，因此取名为 JavaScript。但实际上它的语法风格与 Self 及 Scheme 较为接近。<br> 
