@@ -3,10 +3,11 @@
 ## 课后作业
 
 1. [01-使用维基百科（Wikipedia）解释名词](hw01)
-2. [02-我的第二次作业](hw02)
-3. [03-我的第三次作业](hw03)
-4. [04-我的第四次作业](hw04)
-5. [05-我的第五次作业](hw05)
+2. [02-进制转换](hw02)
+3. [03-Data_Representation](hw03)
+4. [04-Color's Code](hw04)
+5. [05-Gates_And_Circuits](hw05)
+6. [06-Computing_Components](hw06)
 
 
 ## 实验与实践
