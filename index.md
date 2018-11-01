@@ -8,6 +8,7 @@
 4. [04-Color's Code](hw04)
 5. [05-Gates_And_Circuits](hw05)
 6. [06-Computing_Components](hw06)
+7. [07-Machine_And_Assembly_Language](hw07)
 
 
 ## 实验与实践
