@@ -25,32 +25,27 @@ title: “Ben 10的守护”游戏制作
 
 **<font size="4">Ben 10</font>**
 
-<font size="4">Object name: Ben 10<br>Collaborator：Sprite<br>Events & Actions：射出子弹，消灭怪物</font><br>
-<font size="4">Attribute:</font><br>
+<font size="4">Object name: Ben 10<br>Collaborator：Sprite<br>Events & Actions：射出子弹，消灭怪物<br>Attribute:</font><br>
 ![](图片/Ben 10.jpg "Ben 10")<br><br>
 
 **<font size="4">Ben 10的朋友</font>**
 
-<font size="4">Object name: 楪祈<br>Collaborator：Sprite<br>Events & Actions：卧倒在地，被怪物碰撞后游戏结束</font><br>
-<font size="4">Attribute:</font><br>
+<font size="4">Object name: 楪祈<br>Collaborator：Sprite<br>Events & Actions：卧倒在地，被怪物碰撞后游戏结束<br>Attribute:</font><br>
 ![](图片/朋友.jpg "Ben 10的朋友")<br><br>
 
 **<font size="4">Green Monster</font>**
 
-<font size="4">Object name: Green Monster<br>Collaborator：Sprite<br>Events & Actions：有3滴血，向 Ben 10 和 楪祈 撞击</font><br>
-<font size="4">Attribute:</font><br>
+<font size="4">Object name: Green Monster<br>Collaborator：Sprite<br>Events & Actions：有3滴血，向 Ben 10 和 楪祈 撞击<br>Attribute:</font><br>
 ![](图片/绿色怪物.jpg "Green Monster")<br><br>
 
 **<font size="4">Red Monster</font>**
 
-<font size="4">Object name: Red Monster<br>Collaborator：Sprite<br>Events & Actions：有8滴血，向 Ben 10 和 楪祈 撞击</font><br>
-<font size="4">Attribute:</font><br>
+<font size="4">Object name: Red Monster<br>Collaborator：Sprite<br>Events & Actions：有8滴血，向 Ben 10 和 楪祈 撞击<br>Attribute:</font><br>
 ![](图片/红色怪物.jpg "Red Monster")<br><br>
 
 **<font size="4">Bullet</font>**
 
-<font size="4">Object name: Bullet<br>Collaborator：Sprite<br>Events & Actions：向鼠标点击的位置沿直线移动，碰撞到怪物后消失并使怪物失去一滴血</font><br>
-<font size="4">Attribute:</font><br>
+<font size="4">Object name: Bullet<br>Collaborator：Sprite<br>Events & Actions：向鼠标点击的位置沿直线移动，碰撞到怪物后消失并使怪物失去一滴血<br>Attribute:</font><br>
 ![](图片/bullet.jpg "Bullet")<br><br><br><br>
 
 **<font size="5">游戏设计</font>**
