@@ -1,54 +1,328 @@
 ---
 layout: default
-title: 程序“猿”之死
+title: 贪吃蛇实验报告
 ---
+<center><font size="7" font face="楷体" font color="#000066">贪吃蛇实验报告</font></center><br><br>
 
-# <center><font size="7" font face="楷体" font color="#660000">程序“猿”之死</font></center>
+<font size="4">1.snake_move.c</font><br><br>
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-<font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在很多小伙伴们看来，程序“猿”们都是些高大上的存在吧。在程序“猿”的眼中，一台电脑、一根网线、一个键盘、一个鼠标就是一个能够改变世界的神器，不合心意时便能神挡杀神，佛挡杀佛。</font><br>
+#define SNAKE_MAX_LENGTH 20          //蛇的最大长度 
+#define SNAKE_HEAD 'H' 
+#define SNAKE_BODY 'X'
+#define	BLANK_CELL ' '
+#define SNAKE_FOOD '$'
+#define WALL_CELL '*'
 
-![](https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3510515744,3244561785&fm=173&s=9A45E14C84640124515B1D000300D0D8&w=640&h=275&img.JPEG)
+//snake stepping:dy=-1(up),1(down); dx=-1(left),1(right); dx/dy = 0(no move); 
+void snakeMove(int ,int );
+//put a food randomized on a blank cell
+void putMoney(void);
+//out cells of the grid
+void output();
+//outs when gameover
+void gameover(int ,int );
+//determine whether the snake get the money or not
+void getMoney(int ,int ); 
 
-![](图片/黑客帝国.jpg)<br><br>
+char map[12][12]=
+	{"************",
+	 "*XXXXH     *",
+	 "*          *",                 //初始状态 
+	 "*          *",                 //直接打表 
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "************"};
 
-<font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确实，在现实中，技术拥有着难以想象的力量，有着能够改变整个世界的魔能。然而，技术不是无所不能的。即便是强大的程序“猿”，也无法保证能够凭借着手中的代码，在世界找到安全而幸福的桃花源地。</font><br><br>
+//define vars for snake, notice name of vars in C	 
+int snakeX[SNAKE_MAX_LENGTH]={1,2,3,4,5};
+int snakeY[SNAKE_MAX_LENGTH]={1,1,1,1,1};               //蛇头和蛇身的坐标 
+int snakeLength = 5;                                    //蛇的初始长度 
 
-<font size="6" font color="#000066">苏享茂之死</font>
+int isAlive = 1;                                        //等于 1 时表示蛇还存活，等于 0 时表示蛇已死亡 
+int flag=0;                                             //等于 1 时表示吃到了 $ ,等于 0 时表示没吃到 $ 
 
-<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就在不远之前，一位程序“猿”的死在程序员社区中引起了轩然大波：WePhone 创始人苏享茂选择了自杀,年仅37岁。
+int main(){
+	char ch;
+	int i,j;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为一个程序“猿”，苏享茂做到的事情、所拥有的技术已经是很大部分的程序“猿”无法做到的了，然而他仍然选择了自杀。逼到他做如此选择的，仅仅是一场带有违法的恶劣性质的婚姻。
+	for(i=0;i<12;i++){
+		for(j=0;j<12;j++){
+			if(j<11)
+				printf("%c",map[i][j]);
+			else if(j==11)
+				printf("%c\n",map[i][j]);
+		}
+	}                                                //打印初识蛇的位置与地图 
+	
+	while(isAlive!=0){
+		scanf("%c",&ch);
+		switch(ch){
+			case 'A': gameover(-1,0);                //先判断是否触发gameover的条件 
+					  snakeMove(-1,0);               //往左移动一格 
+					  output();break;                //打印 
+			case 'D': gameover(1,0);
+					  snakeMove(1,0);                //往右移动一格 
+					  output();break;              
+			case 'W': gameover(0,-1);
+					  snakeMove(0,-1);               //往上移动一格 
+					  output();break;
+			case 'S': gameover(0,1);
+					  snakeMove(0,1);                //往下移动一格 
+					  output();break;
+		}
+		
+	}
+	
+	printf("Game Over!!!\n");
+	
+	return 0;
+} 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整个事情其实很简单。苏享茂世纪佳缘社交网站结识了翟欣欣。他想必很喜欢翟欣欣吧，在领证前，苏享茂就已经为翟欣欣付出了几百万元。可是现实就是如此残酷，在结婚后，苏享茂就发现翟欣欣的险恶，并公开表示翟欣欣是个撒谎成性的心机婊，并且双方都提出了离婚。
+void snakeMove(int dx,int dy){
+	int tmpX1=0,tmpY1=0,tmpX2=0,tmpY2=0,i,j;
+	tmpX1=snakeX[snakeLength-1];
+	tmpY1=snakeY[snakeLength-1];
+	
+	for(i=snakeLength-2;i>=0;i--){
+			tmpX2=snakeX[i];
+			tmpY2=snakeY[i];               //tmpX2、tmpY2用于记录蛇当前部分的坐标 
+			snakeX[i]=tmpX1;
+			snakeY[i]=tmpY1;              //tmpX1、tmpY1用于记录蛇上一部分的坐标 
+			tmpX1=tmpX2;
+			tmpY1=tmpY2;
+		}                                 //将后面的蛇身往前挪一位 
+	
+	map[tmpY1][tmpX1]=' ';                //将末尾改为 空格 
+	
+	if(dx==-1&&dy==0)
+		snakeX[snakeLength-1]-=1;
+	else if(dx==1&&dy==0)
+		snakeX[snakeLength-1]+=1;
+	else if(dx==0&&dy==-1)
+		snakeY[snakeLength-1]-=1;
+	else if(dx==0&&dy==1)
+		snakeY[snakeLength-1]+=1;		  //将蛇头按方向行进一位
+			                                   
+	for(i=0;i<snakeLength;i++){
+		if(i<snakeLength-1)
+			map[snakeY[i]][snakeX[i]]='X';
+		else if(i==snakeLength-1)
+			map[snakeY[i]][snakeX[i]]='H';
+	}									  //将蛇头和蛇身赋值相应字符
+}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只不过，提出离婚并不是事件的终止。翟欣欣通过各种手段威逼苏享茂，如苏享茂的公司WePhone属于非法经营的灰色地带，她可以通过舅舅举报苏享茂的公司等，要求赔偿1000万元人民币以及三亚的一套房产。
+void gameover(int dx,int dy){
+	if(map[snakeY[snakeLength-1]+dy][snakeX[snakeLength-1]+dx]=='X'||map[snakeY[snakeLength-1]+dy][snakeX[snakeLength-1]+dx]=='*')
+		isAlive=0;
+}                                             //判断游戏是否结束，若结束，将 0 赋值给 isAlive 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这还不是最恐怖的。翟欣欣在离婚协议书上还特意注明男方债务与女方无关。根据苏享茂本人说法，翟欣欣这明显是要在离婚之后继续举报他，让他承担他一个人难以承担的债务。
+void output(){
+	int i=0,j=0;
+	for(i=0;i<12;i++){
+		for(j=0;j<12;j++){
+			if(j<11)
+				printf("%c",map[i][j]);
+			else if(j==11)
+				printf("%c\n",map[i][j]);
+		}
+	}
+}	                                    	  //打印 
+```
+<br><br>
+<font size="4">2.snake_eat.c</font><br><br>
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这一切的一切，最终便导致了苏享茂的自杀。</font><br>
-![](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1004391133,695098343&fm=26&gp=0.jpg)
+#define SNAKE_MAX_LENGTH 20          //蛇的最大长度 
+#define SNAKE_HEAD 'H' 
+#define SNAKE_BODY 'X'
+#define	BLANK_CELL ' '
+#define SNAKE_FOOD '$'
+#define WALL_CELL '*'
 
-<br>
-<font size="6" font color="#660066">不是一个人的悲剧</font>
+//snake stepping:dy=-1(up),1(down); dx=-1(left),1(right); dx/dy = 0(no move); 
+void snakeMove(int ,int );
+//put a food randomized on a blank cell
+void putMoney(void);
+//out cells of the grid
+void output();
+//outs when gameover
+void gameover(int ,int );
+//determine whether the snake get the money or not
+void getMoney(int ,int ); 
 
-<font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;苏享茂自杀不仅是他一个人的悲剧，也反映了程序员群体的心理和认知困境。</font>
+char map[12][12]=
+	{"************",
+	 "*XXXXH     *",
+	 "*          *",                 //初始状态 
+	 "*          *",                 //直接打表 
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "*          *",
+	 "************"};
 
-<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电影里程序员个个都是钢铁侠，但现实中的码农大部分却只是简单而平凡的一个个体。他们现实中上班只是埋头码字，下班也就是硬盘探索人生。
+//define vars for snake, notice name of vars in C	 
+int snakeX[SNAKE_MAX_LENGTH]={1,2,3,4,5};
+int snakeY[SNAKE_MAX_LENGTH]={1,1,1,1,1};               //蛇头和蛇身的坐标 
+int snakeLength = 5;                                    //蛇的初始长度 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是，**客观上高企的专业壁垒挡住了很多普通人对程序员世界的窥视，但也反过来挡住码农们对外界交流的路径。**
+int isAlive = 1;                                        //等于 1 时表示蛇还存活，等于 0 时表示蛇已死亡 
+int flag=0;                                             //等于 1 时表示吃到了 $ ,等于 0 时表示没吃到 $ 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序员的世界很单纯，高强度的职业训练让很多程序员潜意识里把代码的逻辑关系投射到现实世界。然而复杂的人性并不是以严谨的逻辑为基础，更多折射基于利益的精打细算和情绪的任性。码农们大多单纯，他们成天流连于代码之中，渴望凡间的幸福却又不懂凡间的故事。
+int main(){
+	char ch;
+	int i,j;
+	
+	putMoney();                                      //最开始放置一个食物 $ 
+	
+	for(i=0;i<12;i++){
+		for(j=0;j<12;j++){
+			if(j<11)
+				printf("%c",map[i][j]);
+			else if(j==11)
+				printf("%c\n",map[i][j]);
+		}
+	}                                                //打印初识蛇的位置与地图 
+	
+	while(isAlive!=0){
+		scanf("%c",&ch);
+		switch(ch){
+			case 'A': gameover(-1,0);                //先判断是否触发gameover的条件 
+					  snakeMove(-1,0);               //往左移动一格 
+					  output();break;                //打印 
+			case 'D': gameover(1,0);
+					  snakeMove(1,0);                //往右移动一格 
+					  output();break;              
+			case 'W': gameover(0,-1);
+					  snakeMove(0,-1);               //往上移动一格 
+					  output();break;
+			case 'S': gameover(0,1);
+					  snakeMove(0,1);                //往下移动一格 
+					  output();break;
+		}
+		
+	}
+	
+	printf("Game Over!!!\n");
+	
+	return 0;
+} 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这时，如果一旦有人给他们了幸福与快乐幻象，可实际却是一个美丽的泡沫，一触即破的话，对于程序“猿”的打击难以想象，他（她）所经受的痛苦旁人也是无法体会。
+void snakeMove(int dx,int dy){
+	int tmpX1=0,tmpY1=0,tmpX2=0,tmpY2=0,i,j;
+	tmpX1=snakeX[snakeLength-1];
+	tmpY1=snakeY[snakeLength-1];
+	
+	getMoney(dx,dy);
+	if(flag==1){							  //当吃到了 $ 时 
+		snakeLength++;
+		snakeX[snakeLength-1]=snakeX[snakeLength-2]+dx;
+		snakeY[snakeLength-1]=snakeY[snakeLength-2]+dy;
+		map[snakeY[snakeLength-1]][snakeX[snakeLength-1]]='H';
+		map[snakeY[snakeLength-2]][snakeX[snakeLength-2]]='X';
+		flag=0;
+	} 										  
+	else if(flag==0){                         //当没吃到 $ 时 
+		for(i=snakeLength-2;i>=0;i--){
+			tmpX2=snakeX[i];
+			tmpY2=snakeY[i];                  //tmpX2、tmpY2用于记录蛇当前部分的坐标 
+			snakeX[i]=tmpX1;
+			snakeY[i]=tmpY1;                  //tmpX1、tmpY1用于记录蛇上一部分的坐标 
+			tmpX1=tmpX2;
+			tmpY1=tmpY2;
+		}                                     //将后面的蛇身往前挪一位 
+	
+		map[tmpY1][tmpX1]=' ';                //将末尾改为 空格 
+	
+		if(dx==-1&&dy==0)
+			snakeX[snakeLength-1]-=1;
+		else if(dx==1&&dy==0)
+			snakeX[snakeLength-1]+=1;
+		else if(dx==0&&dy==-1)
+			snakeY[snakeLength-1]-=1;
+		else if(dx==0&&dy==1)
+			snakeY[snakeLength-1]+=1;		  //将蛇头按方向行进一位
+			                                   
+		for(i=0;i<snakeLength;i++){
+			if(i<snakeLength-1)
+				map[snakeY[i]][snakeX[i]]='X';
+			else if(i==snakeLength-1)
+				map[snakeY[i]][snakeX[i]]='H';
+		}									  //将蛇头和蛇身赋值相应字符
+	}
+}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如艾米莉·狄金森在她的小诗中所写：**“我本可以容忍黑暗 ,如果我不曾见过太阳”**。如果没有突然间来到的玻璃般脆弱的幸福，想来也就不会感受到如此巨大的痛苦了吧。</font><br>
-![](https://img.huxiucdn.com/article/cover/201709/09/125004948518.png)<br>
-![](https://img.huxiucdn.com/article/cover/201709/09/125042329088.png)
+void gameover(int dx,int dy){
+	if(map[snakeY[snakeLength-1]+dy][snakeX[snakeLength-1]+dx]=='X'||map[snakeY[snakeLength-1]+dy][snakeX[snakeLength-1]+dx]=='*')
+		isAlive=0;
+}                                             //判断游戏是否结束，若结束，将 0 赋值给 isAlive 
 
-<br>
-<font size="6" font color="#006666">行动吧</font>
+void putMoney(){
+	int x,y;
+	
+	srand(time(NULL));
+	x=1+(rand()%10);
+	y=1+(rand()%10);
+	while(map[x][y]!=' '){
+		x=1+(rand()%10);
+		y=1+(rand()%10);
+	}
+	map[x][y]='$';
+}                                          //随机位置产生一个$
 
-<font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希望苏享茂的悲剧能让全社会更多关注程序员群体的心理健康，更希望程序员能主动走出代码的象牙塔，走进有丑恶但也有真善的真实世界。</font>
+void getMoney(int dx,int dy){	
+	if(map[snakeY[snakeLength-1]+dy][snakeX[snakeLength-1]+dx]=='$'){
+		if(snakeLength<SNAKE_MAX_LENGTH){
+			flag=1;
+			putMoney();
+		}
+		else
+			putMoney(); 
+	}
+}                                          //判断是否吃到 $ 
+
+void output(){
+	int i=0,j=0;
+	for(i=0;i<12;i++){
+		for(j=0;j<12;j++){
+			if(j<11)
+				printf("%c",map[i][j]);
+			else if(j==11)
+				printf("%c\n",map[i][j]);
+		}
+	}
+}	                                    	  //打印 
+```
+<br><br>
+<font size="4">3.随机放置食物的伪代码</font><br><br>
+```
+//get two numbers x,y,as 1 <= x <= 10 and 1 <= y <=10
+//use x,y to be a coordinate (x,y)
+
+WHILE the number of food is 0 THEN
+    IF (x,y) of the map is not ' ' THEN
+        regain two numbers to form a new coordinate
+    ELSE IF (x,y) of the map is ' ' THEN
+        turn ' ' to a food '$'
+        the number of food = 1 
+    END IF
+END WHILE
+```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="4"></font><br><br>
