@@ -9,7 +9,7 @@ title: 智能蛇实验报告
 <font size="5">1.智能蛇编程设计</font><br><br>
 <font size="4">（1）学习导入时间</font>  
 <br>
-<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在之前的程序设计等课程中并未学习过如何使用 "<time.h>" 这个头文件，因此在得知智能蛇的任务要求之后非常的迷惑，不知道从何下手。于是，谷歌、百度上线了。。。。。。经过学习，终于知道了如何进行计时。</font><br>
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在之前的程序设计等课程中并未学习过如何使用 "time.h" 这个头文件，因此在得知智能蛇的任务要求之后非常的迷惑，不知道从何下手。于是，谷歌、百度上线了。。。。。。经过学习，终于知道了如何进行计时。</font><br>
 
 ```C
     #include <stdio.h>
