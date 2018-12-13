@@ -23,12 +23,12 @@ title: 智能蛇实验报告
     }                         
 ```
 <br>
-<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个就是及时的代码。sleep(1000) 即及时一秒钟。</font><br>  
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个就是计时的代码。sleep(1000) 即计时一秒钟。</font><br>  
 <font size="4">（2）根据提供的伪代码编写程序</font><br>
 <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在学会了往程序中导入计时器之后，任务紧接着就变成了如何实现智能蛇了。只不过由于有 introduction 里提供的伪代码，思路变得清晰了很多，相应地，任务完成也快了不少。</font><br>
 
 ```C
-    #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
