@@ -10,6 +10,7 @@ title: 智能蛇实验报告
 <font size="4">（1）学习导入时间</font>  
 <br>
 <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在之前的程序设计等课程中并未学习过如何使用 "<time.h>" 这个头文件，因此在得知智能蛇的任务要求之后非常的迷惑，不知道从何下手。于是，谷歌、百度上线了。。。。。。经过学习，终于知道了如何进行计时。</font><br>
+
 ```C
     #include <stdio.h>
     #include <time.h>
@@ -20,13 +21,12 @@ title: 智能蛇实验报告
         goal = wait + clock();
         while(goal > clock());
     }                         
-```  
-
-<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个就是及时的代码。sleep(1000) 即及时一秒钟。</font>  
-
-<font size="4">（2）根据提供的伪代码编写程序</font>  
-
+```
+<br>
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个就是及时的代码。sleep(1000) 即及时一秒钟。</font><br>  
+<font size="4">（2）根据提供的伪代码编写程序</font><br>
 <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在学会了往程序中导入计时器之后，任务紧接着就变成了如何实现智能蛇了。只不过由于有 introduction 里提供的伪代码，思路变得清晰了很多，相应地，任务完成也快了不少。</font><br>
+
 ```C
     #include <stdio.h>
 #include <stdlib.h>
@@ -260,8 +260,10 @@ char whereGoNext(const int Hx,const int Hy,const int Fx,const int Fy){
 		return movable[flag];
 	}                                                        //返回最近的走法 
 }
-```  
+```
+<br><br>
 <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个就是智能蛇的代码。试了一下连续的五个障碍物放中间和四散分布n多个障碍物时，在 蛇比较短 的情况下并不会导致蛇自杀行为。但是，发现了这个算法还有挺多不智能的地方，例子如下。</font><br>
+
 ```C
     {"************",
      "*          *",
@@ -275,8 +277,10 @@ char whereGoNext(const int Hx,const int Hy,const int Fx,const int Fy){
      "*    XXX   *",
      "*          *",
      "************"}
-```  
+```
+<br>
 <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在如上这种情况时，根据算法，蛇会往左走：</font><br>
+
 ```C
     {"************",
      "*          *",
@@ -290,7 +294,8 @@ char whereGoNext(const int Hx,const int Hy,const int Fx,const int Fy){
      "*     XX   *",
      "*          *",
      "************"}
-```  
+```
+<br>
 <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但在这时，就会发现往上走并不可以完成。此时智能继续往左走，直到上面不是墙壁为止。这导致最终实际上绕了一大段路。最佳的走法应该是往左走，然后往上走，再往左走。只不过我暂时没想到该怎么改进这个算法。。。</font><br><br>
 <font size="5">2.虚拟机、Linux、ubuntu的尝试使用</font><br><br>
 <font size="4">（1）虚拟机的下载、安装等</font><br>
